@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Contracts\IMongoLabDataService.cs" />
+    <Compile Include="Contracts\IStorageService.cs" />
     <Compile Include="Ioc\ConfigureUnity.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Model\Collection.cs" />
@@ -110,6 +111,7 @@
     </Compile>
     <Compile Include="Service\MongoLabDataService.cs" />
     <Compile Include="Ioc\UnityHelper.cs" />
+    <Compile Include="Service\StorageService.cs" />
     <Compile Include="ViewModel\DatabaseViewModel.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -15,14 +15,18 @@ namespace MongoLabSurveyor.Service
 {
     public class MongoLabDataService : IMongoLabDataService
     {
-        string key = "";
+        private IStorageService _storageService;
+        private string key = "";
+        private const string ApiKeySetting = "ApiKey";
         private const string BaseServiceUrl = "https://api.mongolab.com/api/1/"; 
         
         private readonly HttpClient client;
 
-        public MongoLabDataService()
+        public MongoLabDataService(IStorageService storageService)
         {
+            _storageService = storageService;
             client = new HttpClient();
+            key = _storageService.ReadSetting(ApiKeySetting);
         }
 
         public async Task<string[]> GetDatabases()

@@ -1,9 +1,13 @@
 ﻿namespace MongoLabSurveyor.ViewModel
 {
+    using Contracts;
     using System.IO.IsolatedStorage;
 
     public class SettingsViewModel : ViewModelBase
     {
+        private IStorageService _storageService;
+
+        private const string ApiKeySetting = "ApiKey";
         private string _apikey;
         public string ApiKey
         {
@@ -18,28 +22,20 @@
             }
         }
 
+        public SettingsViewModel(IStorageService storageService)
+        {
+            _storageService = storageService;
+        }
+
         public void SaveSetting()
         {
-            IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
-            // txtInput is a TextBox defined in XAML.
-            if (!settings.Contains("apiKey"))
-            {
-                settings.Add("apiKey", _apikey);
-            }
-            else
-            {
-                settings["apiKey"] = _apikey;
-            }
-            settings.Save();
+            _storageService.SaveSetting(ApiKeySetting,_apikey);
 
         }
 
         public void ReadSetting()
         {
-            if (IsolatedStorageSettings.ApplicationSettings.Contains("apiKey"))
-            {
-                ApiKey = IsolatedStorageSettings.ApplicationSettings["apiKey"] as string;
-            }
+            ApiKey = _storageService.ReadSetting(ApiKeySetting);
         }
     }
 }

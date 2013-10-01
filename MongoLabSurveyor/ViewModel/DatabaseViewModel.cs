@@ -1,6 +1,4 @@
-﻿using MongoLabSurveyor.Service;
-
-namespace MongoLabSurveyor.ViewModel
+﻿namespace MongoLabSurveyor.ViewModel
 {
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -9,10 +7,11 @@ namespace MongoLabSurveyor.ViewModel
 
     public class DatabaseViewModel : ViewModelBase
     {
-        private IMongoLabDataService mongoLabDataService;
+        private IMongoLabDataService _mongoLabDataService;
 
-        public DatabaseViewModel()
-        {            
+        public DatabaseViewModel(IMongoLabDataService mongoLabDataService)
+        {
+            _mongoLabDataService = mongoLabDataService;
         }
        
         private ObservableCollection<MongoLabDB> _databases;
@@ -38,9 +37,9 @@ namespace MongoLabSurveyor.ViewModel
         {
             var dbs = new ObservableCollection<MongoLabDB>();
 
-            var databases = await mongoLabDataService.GetDatabases();
+            var databases = await _mongoLabDataService.GetDatabases();
 
-            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, Collections = await mongoLabDataService.GetCollections(dbname) }));
+            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, Collections = await _mongoLabDataService.GetCollections(dbname) }));
 
             Databases = dbs;
         }

@@ -7,18 +7,19 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using MongoLabSurveyor.Service;
 using MongoLabSurveyor.ViewModel;
 
 namespace MongoLabSurveyor.View
 {
     public partial class SettingsPage : PhoneApplicationPage
     {
-        SettingsViewModel vm = new SettingsViewModel();
+        SettingsViewModel vm = new SettingsViewModel(new StorageService());
         public SettingsPage()
         {
             InitializeComponent();
 
-            vm = new SettingsViewModel();
+            vm = new SettingsViewModel(new StorageService());
 
             vm.ReadSetting();
 
