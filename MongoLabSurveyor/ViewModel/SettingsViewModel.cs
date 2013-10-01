@@ -5,7 +5,7 @@
 
     public class SettingsViewModel : ViewModel
     {
-        private IStorageService _storageService;
+        private readonly ISettingsStore settingsStore;
 
         private const string ApiKeySetting = "ApiKey";
         private string _apikey;
@@ -22,20 +22,20 @@
             }
         }
 
-        public SettingsViewModel(IStorageService storageService, INavigationService navigationService)
+        public SettingsViewModel(ISettingsStore settingsStore, INavigationService navigationService)
             : base (navigationService)
         {
-            _storageService = storageService;
+            this.settingsStore = settingsStore;
         }
 
         public void SaveSetting()
         {
-            _storageService.SaveSetting(ApiKeySetting, _apikey);
+            settingsStore.ApiKey = ApiKey;
         }
 
         public void ReadSetting()
         {
-            ApiKey = _storageService.ReadSetting(ApiKeySetting);
+            ApiKey = settingsStore.ApiKey;
         }
     }
 }

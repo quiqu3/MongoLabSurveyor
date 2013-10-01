@@ -98,7 +98,7 @@
     <Compile Include="Service\NavigationService.cs" />
     <Compile Include="Contracts\IMongoLabDataService.cs" />
     <Compile Include="Contracts\INavigationService.cs" />
-    <Compile Include="Contracts\IStorageService.cs" />
+    <Compile Include="Contracts\ISettingsStore.cs" />
     <Compile Include="Ioc\ConfigureUnity.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Model\DbStatsResponse.cs" />
@@ -113,7 +113,7 @@
     </Compile>
     <Compile Include="Service\MongoLabDataService.cs" />
     <Compile Include="Ioc\UnityHelper.cs" />
-    <Compile Include="Service\StorageService.cs" />
+    <Compile Include="Service\SettingsStore.cs" />
     <Compile Include="ViewModel\DatabaseViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
