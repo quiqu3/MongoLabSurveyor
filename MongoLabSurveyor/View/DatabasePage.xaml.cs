@@ -18,7 +18,7 @@ namespace MongoLabSurveyor.View
         public DatabasesPage()
         {
             InitializeComponent();
-            var productViewModel = new DatabaseViewModel(new MongoLabDataService(new StorageService()), new MongoLabSurveyor.Common.NavigationService());
+            var productViewModel = new DatabaseViewModel(new MongoLabDataService(new StorageService()), new MongoLabSurveyor.Service.NavigationService());
 
             productViewModel.GetDatabases();
 

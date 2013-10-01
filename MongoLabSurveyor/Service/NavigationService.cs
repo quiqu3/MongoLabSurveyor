@@ -6,7 +6,6 @@
     using Microsoft.Phone.Controls;
     using Contracts;
 
-
     public class NavigationService : INavigationService
     {
         private PhoneApplicationFrame _mainFrame;

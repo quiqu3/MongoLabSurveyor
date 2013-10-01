@@ -1,9 +1,6 @@
 ﻿namespace MongoLabSurveyor.Model
 {
     public class DbStatsResponse
-    using ViewModel;
-
-    public class DbStatsResponse : ViewModelBase
     {
         public string serverUsed { get; set; }
 
