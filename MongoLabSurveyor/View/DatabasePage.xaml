@@ -24,16 +24,30 @@
             </phone:Pivot.HeaderTemplate>
             <phone:Pivot.ItemTemplate>
                 <DataTemplate>
-                    <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Collections}">
-                        <phone:LongListSelector.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="0,0,0,17">
-                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    <TextBlock Text="3 DOCUMENTS" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>
+                    <ScrollViewer>
+                        <StackPanel Margin="0,0,0,17">
+                            <TextBlock Text="Collections" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.collections}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="Objects" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.objects}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="Document Average size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.avgObjSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="Total Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.dataSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="Storage Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.storageSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="Number of extents" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.numExtents}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="Indexes" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.indexes}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="Index Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.indexSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="File Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.fileSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="Namespace files Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding DbStats.nsSizeMB}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                        </StackPanel>
+                    </ScrollViewer>
                 </DataTemplate>
             </phone:Pivot.ItemTemplate>
         </phone:Pivot>

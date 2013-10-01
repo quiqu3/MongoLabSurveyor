@@ -6,6 +6,7 @@
     {
         public string Name { get; set; }
 
-        public DbStatsResponse Collections { get; set; }
+        public DbStatsResponse DbStats { get; set;}
+       
     }
 }

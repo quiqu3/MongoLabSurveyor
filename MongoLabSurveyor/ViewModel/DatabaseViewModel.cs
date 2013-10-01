@@ -39,7 +39,7 @@
 
             var databases = await _mongoLabDataService.GetDatabases();
 
-            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, Collections = await _mongoLabDataService.GetDbStats(dbname) }));
+            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, DbStats = await _mongoLabDataService.GetDbStats(dbname) }));
 
             Databases = dbs;
         }

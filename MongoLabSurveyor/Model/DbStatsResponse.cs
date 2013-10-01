@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoLabSurveyor.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MongoLabSurveyor.Model
 {
-    public class DbStatsResponse
+    public class DbStatsResponse : ViewModelBase
     {
-        public string serverUsed {get; set;}
+        public string serverUsed { get; set; }
 
         public int collections { get; set; }
 
@@ -30,8 +31,8 @@ namespace MongoLabSurveyor.Model
 
         public int nsSizeMB { get; set; }
 
-           
-            
+
+
         ////    "serverUsed" : "terminus10.mongolab.com/10.38.43.112:41167" , 
         ////"db" : "IdleBitMongoLab" , 
         //"collections" : 3 ,
