@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoLabSurveyor.Contracts;
 using MongoLabSurveyor.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
@@ -12,7 +13,7 @@ using System.IO;
 
 namespace MongoLabSurveyor.Service
 {
-    public class MongoLabDataService
+    public class MongoLabDataService : IMongoLabDataService
     {
         string key = "";
         private const string BaseServiceUrl = "https://api.mongolab.com/api/1/"; 
@@ -100,7 +101,5 @@ namespace MongoLabSurveyor.Service
 
             return array;
         }
-
-       
     }
 }

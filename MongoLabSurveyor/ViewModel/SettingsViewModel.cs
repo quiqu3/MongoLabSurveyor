@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using MongoLabSurveyor.Resources;
-using MongoLabSurveyor.Model;
-using System.IO.IsolatedStorage;
-using MongoLabSurveyor.Service;
-
-namespace MongoLabSurveyor.ViewModel
+﻿namespace MongoLabSurveyor.ViewModel
 {
+    using System.IO.IsolatedStorage;
+
     public class SettingsViewModel : ViewModelBase
     {
-        private string apikey;
+        private string _apikey;
         public string ApiKey
         {
             get
             {
-                return apikey;
+                return _apikey;
             }
             set
             {
-                apikey = value;
+                _apikey = value;
                 RaisePropertyChanged("ApiKey");
             }
         }
@@ -31,11 +24,11 @@ namespace MongoLabSurveyor.ViewModel
             
             if (!settings.Contains("apiKey"))
             {
-                settings.Add("apiKey", apikey);
+                settings.Add("apiKey", _apikey);
             }
             else
             {
-                settings["apiKey"] = apikey;
+                settings["apiKey"] = _apikey;
             }
 
             settings.Save();

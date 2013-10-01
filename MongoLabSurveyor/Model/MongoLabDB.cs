@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MongoLabSurveyor.Model
+﻿namespace MongoLabSurveyor.Model
 {
+    using System.Collections.Generic;
+
     public class MongoLabDB
     {
         public string Name { get; set; }

@@ -1,26 +1,30 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using MongoLabSurveyor.Resources;
-using MongoLabSurveyor.Model;
-using System.IO.IsolatedStorage;
-using MongoLabSurveyor.Service;
+﻿using MongoLabSurveyor.Service;
 
 namespace MongoLabSurveyor.ViewModel
 {
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using Contracts;
+    using Model;
+
     public class DatabaseViewModel : ViewModelBase
     {
-        private ObservableCollection<MongoLabDB> databases;
+        private IMongoLabDataService mongoLabDataService;
+
+        public DatabaseViewModel()
+        {            
+        }
+       
+        private ObservableCollection<MongoLabDB> _databases;
         public ObservableCollection<MongoLabDB> Databases
         {
             get
             {
-                return databases;
+                return _databases;
             }
             set
             {
-                databases = value;
+                _databases = value;
                 RaisePropertyChanged("Databases");
             }
         }
@@ -33,10 +37,10 @@ namespace MongoLabSurveyor.ViewModel
         public async void GetDefaultDatabases()
         {
             var dbs = new ObservableCollection<MongoLabDB>();
-            var service = new MongoLabDataService();
-            var databases = await service.GetDatabases();
 
-            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, Collections = await service.GetDbStats(dbname) }));
+            var databases = await mongoLabDataService.GetDatabases();
+
+            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, Collections = await mongoLabDataService.GetDbStats(dbname) }));
 
             Databases = dbs;
         }
