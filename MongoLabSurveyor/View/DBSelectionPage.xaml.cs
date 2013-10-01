@@ -1,5 +1,4 @@
 ﻿using Microsoft.Phone.Controls;
-using MongoLabSurveyor.Common;
 using MongoLabSurveyor.Service;
 using MongoLabSurveyor.ViewModel;
 

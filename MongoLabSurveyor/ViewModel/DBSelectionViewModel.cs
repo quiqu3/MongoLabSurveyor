@@ -16,6 +16,10 @@ namespace MongoLabSurveyor.ViewModel
             {
                 return _mongoLabDataService.GetDatabases() as ICollection<string>;
             }
+            set
+            {
+                _dbCollection = value;
+            }
         } 
 
         public DBSelectionViewModel(IMongoLabDataService mongoLabDataService, INavigationService navigationService)
