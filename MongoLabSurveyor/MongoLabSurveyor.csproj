@@ -95,7 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\NavigationService.cs" />
+    <Compile Include="Service\NavigationService.cs" />
     <Compile Include="Contracts\IMongoLabDataService.cs" />
     <Compile Include="Contracts\INavigationService.cs" />
     <Compile Include="Contracts\IStorageService.cs" />

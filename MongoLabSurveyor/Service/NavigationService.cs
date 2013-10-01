@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using MongoLabSurveyor.Contracts;
-
-namespace MongoLabSurveyor.Common
+﻿namespace MongoLabSurveyor.Service
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Navigation;
+    using Microsoft.Phone.Controls;
+    using Contracts;
+
+
     public class NavigationService : INavigationService
     {
         private PhoneApplicationFrame _mainFrame;
