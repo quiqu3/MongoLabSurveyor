@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using MongoLabSurveyor.Contracts;
 using MongoLabSurveyor.ViewModel;
 
 namespace MongoLabSurveyor.View
@@ -16,7 +17,7 @@ namespace MongoLabSurveyor.View
         public DatabasesPage()
         {
             InitializeComponent();
-            DatabaseViewModel productViewModel = new DatabaseViewModel();
+            var productViewModel = new DatabaseViewModel();
 
             productViewModel.GetDatabases();
 

@@ -5,9 +5,13 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Reactive;
 using Microsoft.Phone.Shell;
+using Microsoft.Practices.Unity;
 using MongoLabSurveyor.Resources;
+using MongoLabSurveyor.Unity;
 using MongoLabSurveyor.ViewModel;
+
 
 namespace MongoLabSurveyor
 {
@@ -34,7 +38,7 @@ namespace MongoLabSurveyor
             InitializePhoneApplication();
 
             // Language display initialization
-            InitializeLanguage();
+            InitializeLanguage();            
 
             // Show graphics profiling information while debugging.
             if (Debugger.IsAttached)
@@ -55,7 +59,7 @@ namespace MongoLabSurveyor
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-        }
+        }        
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
@@ -219,5 +223,6 @@ namespace MongoLabSurveyor
                 throw;
             }
         }
+       
     }
 }

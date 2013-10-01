@@ -1,11 +1,7 @@
-﻿using MongoLabSurveyor.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace MongoLabSurveyor.Model
+﻿namespace MongoLabSurveyor.Model
 {
+    using ViewModel;
+
     public class Collection : ViewModelBase
     {
         private string name;

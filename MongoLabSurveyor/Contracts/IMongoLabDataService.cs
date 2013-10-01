@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using MongoLabSurveyor.Model;
-
-namespace MongoLabSurveyor.Contracts
+﻿namespace MongoLabSurveyor.Contracts
 {
-    interface IMongoLabDataService
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Model;
+
+    public interface IMongoLabDataService
     {        
         Task<string[]> GetDatabases();
         Task<List<Collection>> GetCollections(string db);
