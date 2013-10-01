@@ -6,9 +6,7 @@
 
     public interface IMongoLabDataService
     {        
-        Task<string[]> GetDatabases();
-        Task<List<Collection>> GetCollections(string db);
-        Task<int> GetDocumentsCount(string db, string collection);
+        Task<string[]> GetDatabases();        
         Task<DbStatsResponse> GetDbStats(string db);
     }
 }
