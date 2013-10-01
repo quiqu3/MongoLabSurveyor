@@ -26,7 +26,7 @@ namespace MongoLabSurveyor.Service
         {
             _storageService = storageService;
             client = new HttpClient();
-            key = "51b1cfa96045b6d55e0001cd"; // _storageService.ReadSetting(ApiKeySetting);
+            key = _storageService.ReadSetting(ApiKeySetting);
         }
 
         public async Task<string[]> GetDatabases()
