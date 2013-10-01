@@ -1,4 +1,5 @@
 ﻿using Microsoft.Phone.Controls;
+using MongoLabSurveyor.Common;
 using MongoLabSurveyor.Service;
 using MongoLabSurveyor.ViewModel;
 
@@ -10,7 +11,7 @@ namespace MongoLabSurveyor.View
         {
             InitializeComponent();
 
-            this.DataContext = new DBSelectionViewModel(new MongoLabDataService(new StorageService()));            
+            this.DataContext = new DBSelectionViewModel(new MongoLabDataService(new StorageService()),new NavigationService());            
         }
     }
 }
