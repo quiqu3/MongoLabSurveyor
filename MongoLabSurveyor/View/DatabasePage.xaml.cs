@@ -22,5 +22,10 @@ namespace MongoLabSurveyor.View
 
             this.DataContext = productViewModel;
         }
+
+        private void SettingsMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/SettingsPage.xaml", UriKind.Relative));
+        }
     }
 }
