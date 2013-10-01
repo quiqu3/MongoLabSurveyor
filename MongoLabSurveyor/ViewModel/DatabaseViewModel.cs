@@ -10,7 +10,7 @@
         private IMongoLabDataService _mongoLabDataService;
 
         public DatabaseViewModel(IMongoLabDataService mongoLabDataService)
-        {
+        {            
             _mongoLabDataService = mongoLabDataService;
         }
        
@@ -39,7 +39,7 @@
 
             var databases = await _mongoLabDataService.GetDatabases();
 
-            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, Collections = await _mongoLabDataService.GetCollections(dbname) }));
+            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, Collections = await mongoLabDataService.GetDbStats(dbname) }));
 
             Databases = dbs;
         }

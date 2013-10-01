@@ -9,5 +9,6 @@
         Task<string[]> GetDatabases();
         Task<List<Collection>> GetCollections(string db);
         Task<int> GetDocumentsCount(string db, string collection);
+        Task<DbStatsResponse> GetDbStats(string db);
     }
 }
