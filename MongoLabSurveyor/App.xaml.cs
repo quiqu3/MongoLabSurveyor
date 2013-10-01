@@ -7,7 +7,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MongoLabSurveyor.Resources;
-using MongoLabSurveyor.ViewModels;
+using MongoLabSurveyor.ViewModel;
 
 namespace MongoLabSurveyor
 {
