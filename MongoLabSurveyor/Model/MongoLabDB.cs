@@ -11,6 +11,6 @@ namespace MongoLabSurveyor.Model
     {
         public string Name { get; set; }
 
-        public List<Collection> Collections { get; set; }
+        public DbStatsResponse Collections { get; set; }
     }
 }

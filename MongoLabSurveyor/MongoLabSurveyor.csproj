@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Model\Collection.cs" />
+    <Compile Include="Model\DbStatsResponse.cs" />
     <Compile Include="Model\MongoLabDB.cs">
       <SubType>Code</SubType>
     </Compile>

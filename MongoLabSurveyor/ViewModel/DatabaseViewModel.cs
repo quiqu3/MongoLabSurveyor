@@ -36,7 +36,7 @@ namespace MongoLabSurveyor.ViewModel
             var service = new MongoLabDataService();
             var databases = await service.GetDatabases();
 
-            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, Collections = await service.GetCollections(dbname) }));
+            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, Collections = await service.GetDbStats(dbname) }));
 
             Databases = dbs;
         }

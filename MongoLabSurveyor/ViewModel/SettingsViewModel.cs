@@ -28,7 +28,7 @@ namespace MongoLabSurveyor.ViewModel
         public void SaveSetting()
         {
             IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
-            // txtInput is a TextBox defined in XAML.
+            
             if (!settings.Contains("apiKey"))
             {
                 settings.Add("apiKey", apikey);
@@ -37,6 +37,7 @@ namespace MongoLabSurveyor.ViewModel
             {
                 settings["apiKey"] = apikey;
             }
+
             settings.Save();
 
         }
