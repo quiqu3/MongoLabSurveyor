@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MongoLabSurveyor.Model
 {
-    public class DbStatsResponse : ViewModelBase
+    public class DbStatsResponse
     {
         public string serverUsed { get; set; }
 

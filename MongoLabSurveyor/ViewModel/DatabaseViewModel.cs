@@ -5,11 +5,12 @@
     using Contracts;
     using Model;
 
-    public class DatabaseViewModel : ViewModelBase
+    public class DatabaseViewModel : ViewModel
     {
-        private IMongoLabDataService _mongoLabDataService;
+        private readonly IMongoLabDataService _mongoLabDataService;
 
-        public DatabaseViewModel(IMongoLabDataService mongoLabDataService)
+        public DatabaseViewModel(IMongoLabDataService mongoLabDataService, INavigationService navigationService)
+            : base (navigationService)
         {            
             _mongoLabDataService = mongoLabDataService;
         }

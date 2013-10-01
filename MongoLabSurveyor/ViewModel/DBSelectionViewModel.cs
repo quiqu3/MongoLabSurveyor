@@ -4,10 +4,9 @@ using MongoLabSurveyor.Contracts;
 
 namespace MongoLabSurveyor.ViewModel
 {
-    public class DBSelectionViewModel : ViewModelBase
+    public class DBSelectionViewModel : ViewModel
     {
         private IMongoLabDataService _mongoLabDataService;
-        private INavigationService _navigationService;
 
         private ICollection<string> _dbCollection;
 
@@ -20,9 +19,9 @@ namespace MongoLabSurveyor.ViewModel
         } 
 
         public DBSelectionViewModel(IMongoLabDataService mongoLabDataService, INavigationService navigationService)
+            : base (navigationService)
         {
             _mongoLabDataService = mongoLabDataService;
-            _navigationService = navigationService;
         }
        
     }

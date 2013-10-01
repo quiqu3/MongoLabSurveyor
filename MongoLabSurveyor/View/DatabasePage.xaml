@@ -60,6 +60,7 @@
             <shell:ApplicationBarIconButton Click="Settings_Click" IconUri="/Images/settings.png" Text="settings" />-->
 
             <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Click="SettingsMenuItem_Click" Text="select databases" />
                 <shell:ApplicationBarMenuItem Click="SettingsMenuItem_Click" Text="settings" />
             </shell:ApplicationBar.MenuItems>
 

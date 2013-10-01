@@ -101,7 +101,6 @@
     <Compile Include="Contracts\IStorageService.cs" />
     <Compile Include="Ioc\ConfigureUnity.cs" />
     <Compile Include="LocalizedStrings.cs" />
-    <Compile Include="Model\Collection.cs" />
     <Compile Include="Model\DbStatsResponse.cs" />
     <Compile Include="Model\MongoLabDB.cs">
       <SubType>Code</SubType>
@@ -120,7 +119,7 @@
     </Compile>
     <Compile Include="ViewModel\DBSelectionViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="View\DatabasePage.xaml.cs">
       <DependentUpon>DatabasePage.xaml</DependentUpon>
     </Compile>

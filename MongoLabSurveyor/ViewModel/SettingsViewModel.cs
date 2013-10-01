@@ -3,7 +3,7 @@
     using Contracts;
     using System.IO.IsolatedStorage;
 
-    public class SettingsViewModel : ViewModelBase
+    public class SettingsViewModel : ViewModel
     {
         private IStorageService _storageService;
 
@@ -22,7 +22,8 @@
             }
         }
 
-        public SettingsViewModel(IStorageService storageService)
+        public SettingsViewModel(IStorageService storageService, INavigationService navigationService)
+            : base (navigationService)
         {
             _storageService = storageService;
         }

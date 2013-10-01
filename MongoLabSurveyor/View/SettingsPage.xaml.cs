@@ -14,13 +14,13 @@ namespace MongoLabSurveyor.View
 {
     public partial class SettingsPage : PhoneApplicationPage
     {
-        SettingsViewModel vm = new SettingsViewModel(new StorageService());
+        SettingsViewModel vm = new SettingsViewModel(new StorageService(), new MongoLabSurveyor.Common.NavigationService());
 
         public SettingsPage()
         {
             InitializeComponent();
 
-            vm = new SettingsViewModel(new StorageService());
+            vm = new SettingsViewModel(new StorageService(), new MongoLabSurveyor.Common.NavigationService());
 
             vm.ReadSetting();
 
