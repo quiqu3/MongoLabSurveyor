@@ -15,6 +15,7 @@ namespace MongoLabSurveyor.View
     public partial class SettingsPage : PhoneApplicationPage
     {
         SettingsViewModel vm = new SettingsViewModel(new StorageService());
+
         public SettingsPage()
         {
             InitializeComponent();
