@@ -15,6 +15,7 @@ namespace MongoLabSurveyor.View
     public partial class SettingsPage : PhoneApplicationPage
     {
         SettingsViewModel vm = new SettingsViewModel(new StorageService());
+
         public SettingsPage()
         {
             InitializeComponent();
@@ -29,6 +30,11 @@ namespace MongoLabSurveyor.View
         private void Save_Click(object sender, EventArgs e)
         {
             vm.SaveSetting();
+        }
+
+        private void Select_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

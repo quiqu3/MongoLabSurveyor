@@ -95,7 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\NavigationService.cs" />
     <Compile Include="Contracts\IMongoLabDataService.cs" />
+    <Compile Include="Contracts\INavigationService.cs" />
     <Compile Include="Contracts\IStorageService.cs" />
     <Compile Include="Ioc\ConfigureUnity.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -116,10 +118,14 @@
     <Compile Include="ViewModel\DatabaseViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\DBSelectionViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\DatabasePage.xaml.cs">
       <DependentUpon>DatabasePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DBSelectionPage.xaml.cs">
+      <DependentUpon>DBSelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -131,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="View\DatabasePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DBSelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

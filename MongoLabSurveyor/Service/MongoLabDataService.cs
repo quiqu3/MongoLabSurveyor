@@ -31,7 +31,7 @@ namespace MongoLabSurveyor.Service
 
         public async Task<string[]> GetDatabases()
         {
-            var ServiceUrl = String.Format("{0}/databases?apiKey={1}", BaseServiceUrl, key);
+            var ServiceUrl = String.Format("{0}/databases?apiKey={1}", BaseServiceUrl, "5245ce10b91a11a1100003b6");
 
             var request = new HttpRequestMessage(HttpMethod.Get, new Uri(ServiceUrl));
             var response = await client.SendAsync(request);
