@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using MongoLabSurveyor.ViewModel;
 
 namespace MongoLabSurveyor.View
 {
@@ -15,6 +16,17 @@ namespace MongoLabSurveyor.View
         public SettingsPage()
         {
             InitializeComponent();
+
+            var settingsViewModel = new SettingsViewModel();
+
+            settingsViewModel.GetDatabases();
+
+            this.DataContext = settingsViewModel;
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
