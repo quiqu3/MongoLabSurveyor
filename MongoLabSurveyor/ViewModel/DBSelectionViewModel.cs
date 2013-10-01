@@ -7,6 +7,7 @@ namespace MongoLabSurveyor.ViewModel
     public class DBSelectionViewModel : ViewModelBase
     {
         private IMongoLabDataService _mongoLabDataService;
+        private INavigationService _navigationService;
 
         private ICollection<string> _dbCollection;
 
@@ -18,9 +19,11 @@ namespace MongoLabSurveyor.ViewModel
             }
         } 
 
-        public DBSelectionViewModel(IMongoLabDataService mongoLabDataService)
+        public DBSelectionViewModel(IMongoLabDataService mongoLabDataService, INavigationService navigationService)
         {
             _mongoLabDataService = mongoLabDataService;
+            _navigationService = navigationService;
         }
+       
     }
 }
