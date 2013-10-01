@@ -11,16 +11,16 @@ namespace MongoLabSurveyor.ViewModel
 {
     public class DatabaseViewModel : ViewModelBase
     {
-        private ObservableCollection<MongoLabDB> databases;
+        private ObservableCollection<MongoLabDB> _databases;
         public ObservableCollection<MongoLabDB> Databases
         {
             get
             {
-                return databases;
+                return _databases;
             }
             set
             {
-                databases = value;
+                _databases = value;
                 RaisePropertyChanged("Databases");
             }
         }
