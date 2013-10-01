@@ -31,5 +31,10 @@ namespace MongoLabSurveyor.View
         {
             vm.SaveSetting();
         }
+
+        private void Select_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

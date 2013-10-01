@@ -4,7 +4,7 @@ using MongoLabSurveyor.Contracts;
 
 namespace MongoLabSurveyor.ViewModel
 {
-    public class DBSelectionViewModel
+    public class DBSelectionViewModel : ViewModelBase
     {
         private IMongoLabDataService _mongoLabDataService;
 

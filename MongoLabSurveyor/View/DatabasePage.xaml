@@ -15,28 +15,42 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="SELECT COLLECTION" Style="{StaticResource PhoneTextNormalStyle}"/>
-        </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel>
-                <ListBox x:Name="CollectionList" SelectionMode="Extended" ItemsSource="{Binding DbCollection,Mode=OneWay}" />
-            </StackPanel>
-        </Grid>
+        <!--Pivot Control-->
+        <phone:Pivot Title="MONGOLAB SURVEYOR" ItemsSource="{Binding Databases}">
+            <phone:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <ContentControl Content="{Binding Name}" />
+                </DataTemplate>
+            </phone:Pivot.HeaderTemplate>
+            <phone:Pivot.ItemTemplate>
+                <DataTemplate>
+                    <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Collections}">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,17">
+                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                    <TextBlock Text="3 DOCUMENTS" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </DataTemplate>
+            </phone:Pivot.ItemTemplate>
+        </phone:Pivot>
     </Grid>
 
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
+    <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="True" IsVisible="True">
-            <shell:ApplicationBarIconButton Click="" IconUri="/Images/save.png" Text="save" />
+
+            <!--<shell:ApplicationBarIconButton Click="Save_Click" IconUri="/Images/save.png" Text="save" />
+            <shell:ApplicationBarIconButton Click="Settings_Click" IconUri="/Images/settings.png" Text="settings" />-->
+
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Click="SettingsMenuItem_Click" Text="settings" />
+            </shell:ApplicationBar.MenuItems>
+
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
+
 
 </phone:PhoneApplicationPage>
