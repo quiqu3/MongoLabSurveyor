@@ -25,9 +25,9 @@
             <TextBlock Text="SELECT DB" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
 
-            <!--ContentPanel - place additional content here-->
+        <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="DbListBox" ItemsSource="{Binding DbCollection}" SelectionMode="Extended" />
+            <ListBox x:Name="DbListBox" ItemsSource="{Binding DbCollection,Mode=TwoWay}" SelectionMode="Extended" />
         </Grid>
     </Grid>
 
