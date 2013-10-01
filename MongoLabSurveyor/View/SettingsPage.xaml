@@ -28,8 +28,10 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-            <TextBlock TextWrapping="Wrap" Text="Each API request must pass an apiKey query parameter. To obtain your API key, log in to your MongoLab account and click on your username in the upper right-hand corner next to the 'user:' label. This will lead you to the user admin page where you will see a section titled 'API Key'. If you want to update the current key, click the 'Regenerate API key' button." Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBox></TextBox>
+                <TextBlock TextWrapping="Wrap" Text="Enter the API Key" Style="{StaticResource PhoneTextNormalStyle}"/>
+                <TextBox Text="{Binding ApiKey, Mode=TwoWay}"></TextBox>
+
+                <TextBlock TextWrapping="Wrap" Text="Each API request must pass an apiKey query parameter. To obtain your API key, log in to your MongoLab account and click on your username in the upper right-hand corner next to the 'user:' label. This will lead you to the user admin page where you will see a section titled 'API Key'. If you want to update the current key, click the 'Regenerate API key' button." Style="{StaticResource PhoneTextNormalStyle}"/>
             </StackPanel>
         </Grid>
     </Grid>

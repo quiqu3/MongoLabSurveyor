@@ -25,16 +25,28 @@ namespace MongoLabSurveyor.ViewModel
             }
         }
 
-        public void GetDatabases()
+        public void SaveSetting()
         {
-            GetDefaultDatabases();
+            IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
+            // txtInput is a TextBox defined in XAML.
+            if (!settings.Contains("apiKey"))
+            {
+                settings.Add("apiKey", apikey);
+            }
+            else
+            {
+                settings["apiKey"] = apikey;
+            }
+            settings.Save();
+
         }
 
-        public async void GetDefaultDatabases()
+        public void ReadSetting()
         {
-           
+            if (IsolatedStorageSettings.ApplicationSettings.Contains("apiKey"))
+            {
+                ApiKey = IsolatedStorageSettings.ApplicationSettings["apiKey"] as string;
+            }
         }
-
-        
     }
 }

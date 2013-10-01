@@ -13,20 +13,21 @@ namespace MongoLabSurveyor.View
 {
     public partial class SettingsPage : PhoneApplicationPage
     {
+        SettingsViewModel vm = new SettingsViewModel();
         public SettingsPage()
         {
             InitializeComponent();
 
-            var settingsViewModel = new SettingsViewModel();
+            vm = new SettingsViewModel();
 
-            settingsViewModel.GetDatabases();
+            vm.ReadSetting();
 
-            this.DataContext = settingsViewModel;
+            this.DataContext = vm;
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
-
+            vm.SaveSetting();
         }
     }
 }

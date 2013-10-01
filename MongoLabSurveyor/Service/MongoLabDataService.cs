@@ -14,7 +14,7 @@ namespace MongoLabSurveyor.Service
 {
     public class MongoLabDataService
     {
-        string key = "";
+        string key = "x";
         private const string BaseServiceUrl = "https://api.mongolab.com/api/1/"; 
         
         private readonly HttpClient client;
