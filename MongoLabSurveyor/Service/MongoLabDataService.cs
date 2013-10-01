@@ -26,7 +26,7 @@ namespace MongoLabSurveyor.Service
         {
             _storageService = storageService;
             client = new HttpClient();
-            key = _storageService.ReadSetting(ApiKeySetting);
+            key = "51b1cfa96045b6d55e0001cd"; // _storageService.ReadSetting(ApiKeySetting);
         }
 
         public async Task<string[]> GetDatabases()
@@ -49,7 +49,6 @@ namespace MongoLabSurveyor.Service
 
         public async Task<DbStatsResponse> GetDbStats(string db)
         {
-
             var ServiceUrl = String.Format("{0}/databases/{1}/runCommand?apiKey={2}", BaseServiceUrl, db, key);
             var response = await client.PostAsync(ServiceUrl, new StringContent("{ \"dbStats\": 1, \"scale\": 1024 }", Encoding.UTF8, "application/json"));
 
