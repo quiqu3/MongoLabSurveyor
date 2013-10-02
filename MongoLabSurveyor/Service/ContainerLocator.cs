@@ -51,10 +51,6 @@
                                     WithName.Default,
                                     WithLifetime.ContainerControlled
                                 );
-
-            Container.RegisterType<IMongoLabDataService, MongoLabDataService>();
-            Container.RegisterType<INavigationService, NavigationService>();
-
         }
     }
 }
