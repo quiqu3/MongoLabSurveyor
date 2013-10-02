@@ -8,19 +8,15 @@
 
     public class NavigationService : INavigationService
     {
-        PhoneApplicationFrame rootFrame;
-
-        public NavigationService()
-        {
-            rootFrame = Application.Current.RootVisual as PhoneApplicationFrame;
-        }
         public bool Navigate(Uri source)
         {
+            var rootFrame = Application.Current.RootVisual as PhoneApplicationFrame;
             return rootFrame.Navigate(source);
         }
 
         public void GoBack()
         {
+            var rootFrame = Application.Current.RootVisual as PhoneApplicationFrame;
             if (rootFrame.CanGoBack)
             {
                 rootFrame.GoBack();

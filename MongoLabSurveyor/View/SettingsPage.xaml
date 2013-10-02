@@ -6,6 +6,8 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:commands="clr-namespace:MongoLabSurveyor.Commands"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -24,25 +26,40 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="SETTINGS" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="mongolab" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <TextBlock TextWrapping="Wrap" Text="Enter the API Key" Style="{StaticResource PhoneTextNormalStyle}"/>
-                <TextBox Text="{Binding ApiKey, Mode=TwoWay}"></TextBox>
+                <TextBlock TextWrapping="Wrap" Text="Enter the API Key" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                <TextBox Text="{Binding ApiKey, Mode=TwoWay}" MaxLength="40">
+                    <i:Interaction.Behaviors>
+                        <commands:UpdateTextBindingOnPropertyChanged />
+                    </i:Interaction.Behaviors>
+                </TextBox>
 
-                <TextBlock TextWrapping="Wrap" Text="Each API request must pass an apiKey query parameter. To obtain your API key, log in to your MongoLab account and click on your username in the upper right-hand corner next to the 'user:' label. This will lead you to the user admin page where you will see a section titled 'API Key'. If you want to update the current key, click the 'Regenerate API key' button." Style="{StaticResource PhoneTextNormalStyle}"/>
+                <TextBlock TextWrapping="Wrap" Text="Each API request must pass an apiKey query parameter.
+            &#13;&#13;To obtain your API key, log in to your MongoLab account and click on your username in the upper right-hand corner next to the 'user:' label. &#13;&#13;This will lead you to the user admin page where you will see a section titled 'API Key'. If you want to update the current key, click the 'Regenerate API key' button." Style="{StaticResource PhoneTextNormalStyle}"/>
+                <StackPanel Margin="0,12,0,0">
+                    <Button Content="go to mongolab account" Command="{Binding GoMongoLabLoginCommand}"></Button>
+                </StackPanel>
             </StackPanel>
+            
         </Grid>
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="True" IsVisible="True">
+        <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="False" IsVisible="True">
 
-            <shell:ApplicationBarIconButton Click="Save_Click" IconUri="/Assets/AppBar/appbar.save.rest.png" Text="save" />
+            <shell:ApplicationBarIconButton Click="Save_Click" IconUri="/Toolkit.Content/ApplicationBar.Check.png" Text="done" />
+            <shell:ApplicationBarIconButton Click="Save_Click" IconUri="/Toolkit.Content/ApplicationBar.Cancel.png" Text="cancel" />
 
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
-
+    <i:Interaction.Behaviors>
+        <commands:ApplicationBarButtonCommand ButtonText="done" CommandBinding="{Binding SubmitCommand}"/>
+        <commands:ApplicationBarButtonCommand ButtonText="cancel" CommandBinding="{Binding CancelCommand}"/>
+    </i:Interaction.Behaviors>
+    
 </phone:PhoneApplicationPage>

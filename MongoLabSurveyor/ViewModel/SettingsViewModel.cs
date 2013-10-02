@@ -1,8 +1,10 @@
 ﻿namespace MongoLabSurveyor.ViewModel
 {
     using Contracts;
-    using MongoLabSurveyor.Adapters;
-    using System.IO.IsolatedStorage;
+using Microsoft.Phone.Tasks;
+using MongoLabSurveyor.Adapters;
+using MongoLabSurveyor.Commands;
+using System.IO.IsolatedStorage;
 
     public class SettingsViewModel : ViewModel
     {
@@ -21,11 +23,39 @@
             }
         }
 
+        public DelegateCommand CancelCommand { get; set; }
+        public DelegateCommand SubmitCommand { get; set; }
+        public DelegateCommand GoMongoLabLoginCommand { get; set; }
+
         public SettingsViewModel(ISettingsStore settingsStore, INavigationService navigationService)
             : base (navigationService)
         {
             this.settingsStore = settingsStore;
-            ApiKey = settingsStore.ApiKey;
+
+            this.CancelCommand = new DelegateCommand(this.Cancel);
+            this.SubmitCommand = new DelegateCommand(this.Submit);
+            this.GoMongoLabLoginCommand = new DelegateCommand(this.GoMongoLabLogin);
+
+            ReadSetting();
+        }
+        
+        public void Cancel()
+        {
+            this.NavigationService.GoBack();
+        }
+        
+        public void Submit()
+        {
+            SaveSetting();
+
+            this.NavigationService.GoBack();
+        }
+
+        public void GoMongoLabLogin()
+        {
+            WebBrowserTask wbtask = new WebBrowserTask();
+            wbtask.Uri = new System.Uri("https://mongolab.com/login/");
+            wbtask.Show();
         }
 
         public void SaveSetting()

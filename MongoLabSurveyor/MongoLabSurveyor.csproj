@@ -96,8 +96,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Adapters\NavigationService.cs" />
+    <Compile Include="Commands\ApplicationBarButtonCommand.cs" />
+    <Compile Include="Commands\ApplicationBarExtensions.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DelegateCommandGeneric.cs" />
+    <Compile Include="Commands\UpdateTextBindingOnPropertyChanged.cs" />
     <Compile Include="Contracts\IMongoLabDataService.cs" />
     <Compile Include="Adapters\INavigationService.cs" />
     <Compile Include="Contracts\ISettingsStore.cs" />
@@ -216,6 +219,7 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.15\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
