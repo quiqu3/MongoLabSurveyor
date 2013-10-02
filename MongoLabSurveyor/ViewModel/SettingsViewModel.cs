@@ -25,7 +25,7 @@
             : base (navigationService)
         {
             this.settingsStore = settingsStore;
-            ApiKey = settingsStore.ApiKey;
+            ApiKey = settingsStore.ApiKey;            
         }
 
         public void SaveSetting()

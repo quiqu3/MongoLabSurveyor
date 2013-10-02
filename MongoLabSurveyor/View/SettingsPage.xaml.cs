@@ -16,13 +16,7 @@ namespace MongoLabSurveyor.View
     {
         public SettingsPage()
         {
-            InitializeComponent();
-
-            //vm = new SettingsViewModel(new SettingsStore(), new MongoLabSurveyor.Adapters.ApplicationFrameNavigationService());
-
-            //vm.ReadSetting();
-
-            //this.DataContext = vm;
+            InitializeComponent();            
         }
 
         private void Save_Click(object sender, EventArgs e)

@@ -1,10 +1,6 @@
 ﻿namespace MongoLabSurveyor.ViewModel
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using MongoLabSurveyor.Services;
     using Microsoft.Practices.Unity;
 
@@ -27,6 +23,12 @@
         {
             get { return this.containerLocator.Container.Resolve<SettingsViewModel>(); }
         }
+
+        public DBSelectionViewModel DBSelectionViewModel
+        {
+            get { return this.containerLocator.Container.Resolve<DBSelectionViewModel>(); }
+        }
+        
 
         public void Dispose()
         {
