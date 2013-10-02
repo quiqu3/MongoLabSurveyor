@@ -67,7 +67,7 @@
             <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.sync.rest.png" Text="refresh" />
 
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Click="SettingsMenuItem_Click" Text="select databases" />
+                <shell:ApplicationBarMenuItem Click="SelectDatabaseMenuItem_Click" Text="select databases" />
                 <shell:ApplicationBarMenuItem Click="SettingsMenuItem_Click" Text="settings" />
             </shell:ApplicationBar.MenuItems>
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using System;
+using Microsoft.Phone.Controls;
 using MongoLabSurveyor.Service;
 using MongoLabSurveyor.ViewModel;
 
@@ -8,9 +9,12 @@ namespace MongoLabSurveyor.View
     {
         public DBSelectionPage()
         {
-            InitializeComponent();
+            InitializeComponent();                
+        }
 
-           // this.DataContext = new DBSelectionViewModel(new MongoLabDataService(new SettingsStore()),new NavigationService());            
+        private void Save_Click(object sender, EventArgs e)
+        {
+            ((DBSelectionViewModel)DataContext).SaveSelection();
         }
     }
 }

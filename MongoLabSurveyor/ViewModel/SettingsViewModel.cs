@@ -1,10 +1,10 @@
 ﻿namespace MongoLabSurveyor.ViewModel
 {
     using Contracts;
-using Microsoft.Phone.Tasks;
-using MongoLabSurveyor.Adapters;
-using MongoLabSurveyor.Commands;
-using System.IO.IsolatedStorage;
+    using Microsoft.Phone.Tasks;
+    using MongoLabSurveyor.Adapters;
+    using MongoLabSurveyor.Commands;
+    using System.IO.IsolatedStorage;
 
     public class SettingsViewModel : ViewModel
     {
@@ -28,7 +28,7 @@ using System.IO.IsolatedStorage;
         public DelegateCommand GoMongoLabLoginCommand { get; set; }
 
         public SettingsViewModel(ISettingsStore settingsStore, INavigationService navigationService)
-            : base (navigationService)
+            : base(navigationService)
         {
             this.settingsStore = settingsStore;
 
@@ -38,12 +38,12 @@ using System.IO.IsolatedStorage;
 
             ReadSetting();
         }
-        
+
         public void Cancel()
         {
             this.NavigationService.GoBack();
         }
-        
+
         public void Submit()
         {
             SaveSetting();

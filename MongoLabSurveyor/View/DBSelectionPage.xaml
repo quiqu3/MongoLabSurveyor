@@ -11,7 +11,13 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=DBSelectionViewModel}">
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator 
+            IsVisible="{Binding IsLoading}" IsIndeterminate="True"  />
+    </shell:SystemTray.ProgressIndicator>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -30,5 +36,15 @@
             <ListBox x:Name="DbListBox" ItemsSource="{Binding DbCollection,Mode=TwoWay}" SelectionMode="Extended" />
         </Grid>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="True" IsVisible="True">
+
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.sync.rest.png" Text="refresh" />
+            <shell:ApplicationBarIconButton Click="Save_Click" IconUri="/Assets/AppBar/appbar.save.rest.png" Text="save" />
+
+
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

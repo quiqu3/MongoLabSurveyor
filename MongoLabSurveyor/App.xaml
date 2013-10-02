@@ -1,18 +1,14 @@
 ﻿<Application
     x:Class="MongoLabSurveyor.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:converters="clr-namespace:MongoLabSurveyor.View.Converters"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"    
     xmlns:viewmodel="clr-namespace:MongoLabSurveyor.ViewModel">
 
     <!--Application Resources-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:MongoLabSurveyor" x:Key="LocalizedStrings"/>
-        <viewmodel:ViewModelLocator x:Key="ViewModelLocator"/>
-        <converters:NullToBooleanConverter x:Key="NullToBooleanConverter"/>
-      
+        <viewmodel:ViewModelLocator x:Key="ViewModelLocator"/>              
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
