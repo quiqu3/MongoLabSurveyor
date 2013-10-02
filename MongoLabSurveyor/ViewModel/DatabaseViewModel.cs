@@ -35,6 +35,20 @@
             }
         }
 
+        private bool isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return isLoading;
+            }
+            set
+            {
+                isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         public void Refresh()
         {
             GetDefaultDatabases();
@@ -44,6 +58,8 @@
         {
             if (settingsStore.ApiKey != String.Empty)
             {
+                IsLoading = true;
+
                 var dbs = new ObservableCollection<MongoLabDB>();
 
                 var databases = await mongoLabDataService.GetDatabases();
@@ -51,6 +67,8 @@
                 databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, DbStats = await mongoLabDataService.GetDbStats(dbname) }));
 
                 Databases = dbs;
+
+                IsLoading = false;
             }
         }
 

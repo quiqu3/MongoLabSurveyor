@@ -53,7 +53,7 @@
                                 );
 
             Container.RegisterType<IMongoLabDataService, MongoLabDataService>();
-            Container.RegisterInstance<INavigationService>(new ApplicationFrameNavigationService(((App)Application.Current).RootFrame));
+            Container.RegisterType<INavigationService, NavigationService>();
 
         }
     }

@@ -95,7 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Adapters\ApplicationFrameNavigationService.cs" />
+    <Compile Include="Adapters\NavigationService.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DelegateCommandGeneric.cs" />
     <Compile Include="Contracts\IMongoLabDataService.cs" />
@@ -124,6 +124,7 @@
     <Compile Include="ViewModel\ViewModelLocator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\Converters\NullToBooleanConverter.cs" />
     <Compile Include="View\DatabasePage.xaml.cs">
       <DependentUpon>DatabasePage.xaml</DependentUpon>
     </Compile>

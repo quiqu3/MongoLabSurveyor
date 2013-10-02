@@ -30,11 +30,11 @@ namespace MongoLabSurveyor
             // Global handler for uncaught exceptions.
             UnhandledException += Application_UnhandledException;
 
-            // Phone-specific initialization
-            InitializePhoneApplication();
-
             // Standard XAML initialization
             InitializeComponent();
+
+            // Phone-specific initialization
+            InitializePhoneApplication();
 
             // Language display initialization
             InitializeLanguage();            
