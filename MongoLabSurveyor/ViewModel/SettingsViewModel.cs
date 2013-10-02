@@ -41,6 +41,7 @@
 
         public void Cancel()
         {
+            ReadSetting();
             this.NavigationService.GoBack();
         }
 

@@ -18,10 +18,5 @@ namespace MongoLabSurveyor.View
         {
             InitializeComponent();            
         }
-
-        private void Save_Click(object sender, EventArgs e)
-        {
-            ((SettingsViewModel)DataContext).SaveSetting();
-        }
     }
 }

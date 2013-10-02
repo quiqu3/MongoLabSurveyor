@@ -6,14 +6,16 @@
     using Model;
     using System;
     using MongoLabSurveyor.Adapters;
+    using MongoLabSurveyor.Commands;
 
     public class DatabaseViewModel : ViewModel
     {
-        private const string ERROR_INVALIDAPIKEY = "error loading data. please ensure that your device is connected to the network and the api key is correct.";
-        private const string ERROR_MISSINGAPIKEY = "The Api Key is not configured. Please enter settings and enter the valid api key.";
+        private const string ERROR_INVALIDAPIKEY = "Error loading data. Please ensure that your device is connected to the network and the API key is correct.";
+        private const string ERROR_MISSINGAPIKEY = "The API Key is not configured. Please select the settings option in the App bar and enter a valid API key.";
 
         private readonly IMongoLabDataService mongoLabDataService;
         private readonly ISettingsStore settingsStore;
+        public DelegateCommand RefreshCommand { get; set; }
 
         public DatabaseViewModel(ISettingsStore settingsStore, IMongoLabDataService mongoLabDataService, INavigationService navigationService)
             : base(navigationService)
@@ -21,20 +23,19 @@
             this.mongoLabDataService = mongoLabDataService;
             this.settingsStore = settingsStore;
 
+            databases = new ObservableCollection<MongoLabDB>();
+
+            this.RefreshCommand = new DelegateCommand(this.Refresh);
+
             Refresh();
         }
 
-        private ObservableCollection<MongoLabDB> _databases;
+        private readonly ObservableCollection<MongoLabDB> databases;
         public ObservableCollection<MongoLabDB> Databases
         {
             get
             {
-                return _databases;
-            }
-            set
-            {
-                _databases = value;
-                RaisePropertyChanged("Databases");
+                return databases;
             }
         }
         
@@ -68,6 +69,10 @@
 
         public void Refresh()
         {
+            ErrorMessage = null;
+
+            Databases.Clear();
+
             if (settingsStore.ApiKey != String.Empty)
             {
                 GetDefaultDatabases();
@@ -80,15 +85,13 @@
 
         private async void GetDefaultDatabases()
         {
-            var dbs = new ObservableCollection<MongoLabDB>();
-
             try
             {
                 IsLoading = true;
 
                 var databases = await mongoLabDataService.GetDatabases();
 
-                databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, DbStats = await mongoLabDataService.GetDbStats(dbname) }));
+                 databases.ToList().ForEach(async dbname => Databases.Add(new MongoLabDB() { Name = dbname, DbStats = await mongoLabDataService.GetDbStats(dbname) }));
             }
             catch (Exception ex)
             {
@@ -96,7 +99,6 @@
             }
             finally
             {
-                Databases = dbs;
                 IsLoading = false;
             }
         }

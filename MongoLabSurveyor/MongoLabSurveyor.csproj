@@ -127,6 +127,7 @@
     <Compile Include="ViewModel\ViewModelLocator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\Converters\InverseBooleanConverter.cs" />
     <Compile Include="View\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="View\Converters\NullToBooleanConverter.cs" />
     <Compile Include="View\DatabasePage.xaml.cs">

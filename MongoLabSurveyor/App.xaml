@@ -12,6 +12,7 @@
         <local:LocalizedStrings xmlns:local="clr-namespace:MongoLabSurveyor" x:Key="LocalizedStrings"/>
         <viewmodel:ViewModelLocator x:Key="ViewModelLocator"/>
         <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

@@ -52,8 +52,8 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="False" IsVisible="True">
 
-            <shell:ApplicationBarIconButton Click="Save_Click" IconUri="/Toolkit.Content/ApplicationBar.Check.png" Text="done" />
-            <shell:ApplicationBarIconButton Click="Save_Click" IconUri="/Toolkit.Content/ApplicationBar.Cancel.png" Text="cancel" />
+            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Check.png" Text="done" />
+            <shell:ApplicationBarIconButton IconUri="/Toolkit.Content/ApplicationBar.Cancel.png" Text="cancel" />
 
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
