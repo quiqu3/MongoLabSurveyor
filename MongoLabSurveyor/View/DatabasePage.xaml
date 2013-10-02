@@ -24,7 +24,13 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
         <TextBlock Text="{Binding ErrorMessage}" Visibility="{Binding ErrorMessage, Converter={StaticResource NullToVisibilityConverter}}" TextWrapping="Wrap" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,64,12,12"/>
-        <phone:Pivot Title="MONGOLAB SURVEYOR" ItemsSource="{Binding Databases}">
+        <phone:Pivot ItemsSource="{Binding Databases}">
+            <phone:Pivot.Title>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Assets/ApplicationIconMini.png" Width="22" Height="32"></Image>
+                    <TextBlock>MONGOLAB SURVEYOR</TextBlock>
+                </StackPanel>
+            </phone:Pivot.Title>
             <phone:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <ContentControl Content="{Binding Name}" />
