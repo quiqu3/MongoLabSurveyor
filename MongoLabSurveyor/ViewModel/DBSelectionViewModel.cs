@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MongoLabSurveyor.Contracts;
+using MongoLabSurveyor.Adapters;
 
 namespace MongoLabSurveyor.ViewModel
 {

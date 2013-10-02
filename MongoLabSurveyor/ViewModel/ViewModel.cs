@@ -1,5 +1,6 @@
 ﻿namespace MongoLabSurveyor.ViewModel
 {
+    using MongoLabSurveyor.Adapters;
     using MongoLabSurveyor.Contracts;
     using System.ComponentModel;
 
@@ -25,5 +26,7 @@
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+
     }
 }

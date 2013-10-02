@@ -6,11 +6,13 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=DatabaseViewModel}"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -56,8 +58,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="True" IsVisible="True">
 
-            <!--<shell:ApplicationBarIconButton Click="Save_Click" IconUri="/Images/save.png" Text="save" />
-            <shell:ApplicationBarIconButton Click="Settings_Click" IconUri="/Images/settings.png" Text="settings" />-->
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.sync.rest.png" Text="refresh" />
 
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Click="SettingsMenuItem_Click" Text="select databases" />
@@ -66,6 +67,8 @@
 
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
+    
 
+    
 
 </phone:PhoneApplicationPage>

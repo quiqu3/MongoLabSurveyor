@@ -10,7 +10,7 @@ namespace MongoLabSurveyor.View
         {
             InitializeComponent();
 
-            this.DataContext = new DBSelectionViewModel(new MongoLabDataService(new SettingsStore()),new NavigationService());            
+           // this.DataContext = new DBSelectionViewModel(new MongoLabDataService(new SettingsStore()),new NavigationService());            
         }
     }
 }

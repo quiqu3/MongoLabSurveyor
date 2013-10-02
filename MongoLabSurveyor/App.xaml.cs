@@ -9,7 +9,6 @@ using Microsoft.Phone.Reactive;
 using Microsoft.Phone.Shell;
 using Microsoft.Practices.Unity;
 using MongoLabSurveyor.Resources;
-using MongoLabSurveyor.Unity;
 using MongoLabSurveyor.ViewModel;
 
 
@@ -21,7 +20,7 @@ namespace MongoLabSurveyor
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
-        public static PhoneApplicationFrame RootFrame { get; private set; }
+        public PhoneApplicationFrame RootFrame { get; private set; }
 
         /// <summary>
         /// Constructor for the Application object.
@@ -31,11 +30,11 @@ namespace MongoLabSurveyor
             // Global handler for uncaught exceptions.
             UnhandledException += Application_UnhandledException;
 
-            // Standard XAML initialization
-            InitializeComponent();
-
             // Phone-specific initialization
             InitializePhoneApplication();
+
+            // Standard XAML initialization
+            InitializeComponent();
 
             // Language display initialization
             InitializeLanguage();            
@@ -59,7 +58,12 @@ namespace MongoLabSurveyor
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-        }        
+        }
+
+        private ViewModelLocator ViewModelLocator
+        {
+            get { return (ViewModelLocator)this.Resources["ViewModelLocator"]; }
+        }
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated

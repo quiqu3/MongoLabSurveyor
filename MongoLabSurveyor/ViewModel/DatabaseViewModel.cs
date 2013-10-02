@@ -4,15 +4,21 @@
     using System.Linq;
     using Contracts;
     using Model;
+    using System;
+    using MongoLabSurveyor.Adapters;
 
     public class DatabaseViewModel : ViewModel
     {
-        private readonly IMongoLabDataService _mongoLabDataService;
+        private readonly IMongoLabDataService mongoLabDataService;
+        private readonly ISettingsStore settingsStore;
 
-        public DatabaseViewModel(IMongoLabDataService mongoLabDataService, INavigationService navigationService)
+        public DatabaseViewModel(ISettingsStore settingsStore, IMongoLabDataService mongoLabDataService, INavigationService navigationService)
             : base (navigationService)
         {            
-            _mongoLabDataService = mongoLabDataService;
+            this.mongoLabDataService = mongoLabDataService;
+            this.settingsStore = settingsStore;
+
+            Refresh();
         }
        
         private ObservableCollection<MongoLabDB> _databases;
@@ -29,20 +35,23 @@
             }
         }
 
-        public void GetDatabases()
+        public void Refresh()
         {
             GetDefaultDatabases();
         }
 
-        public async void GetDefaultDatabases()
+        private async void GetDefaultDatabases()
         {
-            var dbs = new ObservableCollection<MongoLabDB>();
+            if (settingsStore.ApiKey != String.Empty)
+            {
+                var dbs = new ObservableCollection<MongoLabDB>();
 
-            var databases = await _mongoLabDataService.GetDatabases();
+                var databases = await mongoLabDataService.GetDatabases();
 
-            databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, DbStats = await _mongoLabDataService.GetDbStats(dbname) }));
+                databases.ToList().ForEach(async dbname => dbs.Add(new MongoLabDB() { Name = dbname, DbStats = await mongoLabDataService.GetDbStats(dbname) }));
 
-            Databases = dbs;
+                Databases = dbs;
+            }
         }
 
         

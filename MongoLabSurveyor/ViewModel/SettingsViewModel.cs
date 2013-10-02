@@ -1,13 +1,12 @@
 ﻿namespace MongoLabSurveyor.ViewModel
 {
     using Contracts;
+    using MongoLabSurveyor.Adapters;
     using System.IO.IsolatedStorage;
 
     public class SettingsViewModel : ViewModel
     {
         private readonly ISettingsStore settingsStore;
-
-        private const string ApiKeySetting = "ApiKey";
         private string _apikey;
         public string ApiKey
         {
@@ -26,6 +25,7 @@
             : base (navigationService)
         {
             this.settingsStore = settingsStore;
+            ApiKey = settingsStore.ApiKey;
         }
 
         public void SaveSetting()

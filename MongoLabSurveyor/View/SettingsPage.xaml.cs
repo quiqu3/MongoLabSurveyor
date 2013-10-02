@@ -14,27 +14,20 @@ namespace MongoLabSurveyor.View
 {
     public partial class SettingsPage : PhoneApplicationPage
     {
-        SettingsViewModel vm = new SettingsViewModel(new SettingsStore(), new MongoLabSurveyor.Service.NavigationService());
-
         public SettingsPage()
         {
             InitializeComponent();
 
-            vm = new SettingsViewModel(new SettingsStore(), new MongoLabSurveyor.Service.NavigationService());
+            //vm = new SettingsViewModel(new SettingsStore(), new MongoLabSurveyor.Adapters.ApplicationFrameNavigationService());
 
-            vm.ReadSetting();
+            //vm.ReadSetting();
 
-            this.DataContext = vm;
+            //this.DataContext = vm;
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
-            vm.SaveSetting();
-        }
-
-        private void Select_Click(object sender, EventArgs e)
-        {
-            
+            ((SettingsViewModel)DataContext).SaveSetting();
         }
     }
 }
