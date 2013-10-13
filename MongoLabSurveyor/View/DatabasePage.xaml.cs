@@ -19,15 +19,5 @@ namespace MongoLabSurveyor.View
         {
             InitializeComponent();
         }
-
-        private void SettingsMenuItem_Click(object sender, EventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/View/SettingsPage.xaml", UriKind.Relative));
-        }
-
-        private void SelectDatabaseMenuItem_Click(object sender, EventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/View/DBSelectionPage.xaml", UriKind.Relative));
-        }
     }
 }
