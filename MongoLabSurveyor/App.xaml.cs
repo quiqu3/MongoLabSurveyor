@@ -107,6 +107,12 @@ namespace MongoLabSurveyor
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }
+            else
+            {
+                MessageBox.Show(e.ExceptionObject.Message);
+                e.Handled = true;
+            }
+
         }
 
         #region Phone application initialization

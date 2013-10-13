@@ -131,13 +131,22 @@
 
         public async void RepairDatabase()
         {
-            IsLoading = true;
-            ProgressMessage = "Repairing...";
+            try
+            {
+                IsLoading = true;
+                ProgressMessage = "Repairing...";
 
-            var currentDb = Databases[selectedPivotIndex];
-            var resp = await mongoLabDataService.SendRepairDatabase(currentDb.Name);
-
-            IsLoading = false;
+                var currentDb = Databases[selectedPivotIndex];
+                var resp = await mongoLabDataService.SendRepairDatabase(currentDb.Name);
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = ERROR_INVALIDAPIKEY;
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         private async void GetDefaultDatabases()
