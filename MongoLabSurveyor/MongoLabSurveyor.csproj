@@ -96,9 +96,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Adapters\NavigationService.cs" />
-    <Compile Include="Commands\ApplicationBarMenuItemCommand.cs" />
     <Compile Include="Commands\ApplicationBarButtonCommand.cs" />
     <Compile Include="Commands\ApplicationBarExtensions.cs" />
+    <Compile Include="Commands\ApplicationBarMenuItemCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DelegateCommandGeneric.cs" />
     <Compile Include="Commands\UpdateTextBindingOnPropertyChanged.cs" />
@@ -131,6 +133,7 @@
     </Compile>
     <Compile Include="View\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="View\Converters\InverseBooleanConverter.cs" />
     <Compile Include="View\Converters\NullToVisibilityConverter.cs" />
