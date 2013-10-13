@@ -2,26 +2,26 @@
 {
     public class DbStatsResponse
     {
-        public string serverUsed { get; set; }
+        public string ServerUsed { get; set; }
 
-        public int collections { get; set; }
+        public int Collections { get; set; }
 
-        public int objects { get; set; }
+        public int Objects { get; set; }
 
-        public float avgObjSize { get; set; }
+        public float AvgObjSize { get; set; }
 
-        public int dataSize { get; set; }
+        public int DataSize { get; set; }
 
-        public int storageSize { get; set; }
+        public int StorageSize { get; set; }
 
-        public int numExtents { get; set; }
+        public int NumExtents { get; set; }
 
-        public int indexes { get; set; }
+        public int Indexes { get; set; }
 
-        public int indexSize { get; set; }
+        public int IndexSize { get; set; }
 
-        public int fileSize { get; set; }
+        public int FileSize { get; set; }
 
-        public int nsSizeMB { get; set; }
+        public int NsSizeMB { get; set; }
     }
 }

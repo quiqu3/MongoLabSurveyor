@@ -59,5 +59,21 @@ namespace MongoLabSurveyor.Service
                 return jsonSerializer.Deserialize<DbStatsResponse>(bson);
             }
         }
+
+        public async Task<RepairDatabaseResponse> SendRepairDatabase(string db)
+        {
+            var ServiceUrl = String.Format("{0}/databases/{1}/runCommand?apiKey={2}", BaseServiceUrl, db, settingsStore.ApiKey);
+            var response = await client.PostAsync(ServiceUrl, new StringContent("{ \"repairDatabase\": 1 }", Encoding.UTF8, "application/json"));
+
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+            var jsonSerializer = new JsonSerializer();
+
+            using (var bson = new JsonTextReader(new StringReader(content)))
+            {
+                return jsonSerializer.Deserialize<RepairDatabaseResponse>(bson);
+            }
+        }
     }
 }

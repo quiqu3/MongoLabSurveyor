@@ -7,6 +7,9 @@
     public interface IMongoLabDataService
     {        
         Task<string[]> GetDatabases();
+        
         Task<DbStatsResponse> GetDbStats(string db);
+
+        Task<RepairDatabaseResponse> SendRepairDatabase(string db);
     }
 }

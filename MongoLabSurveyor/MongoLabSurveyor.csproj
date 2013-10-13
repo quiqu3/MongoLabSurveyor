@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Adapters\NavigationService.cs" />
+    <Compile Include="Commands\ApplicationBarMenuItemCommand.cs" />
     <Compile Include="Commands\ApplicationBarButtonCommand.cs" />
     <Compile Include="Commands\ApplicationBarExtensions.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Adapters\INavigationService.cs" />
     <Compile Include="Contracts\ISettingsStore.cs" />
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Model\RepairDatabaseResponse.cs" />
     <Compile Include="Model\DbStatsResponse.cs" />
     <Compile Include="Model\MongoLabDB.cs">
       <SubType>Code</SubType>
@@ -127,6 +129,9 @@
     <Compile Include="ViewModel\ViewModelLocator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Converters\InverseBooleanConverter.cs" />
     <Compile Include="View\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="View\Converters\NullToBooleanConverter.cs" />
@@ -145,6 +150,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="View\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DatabasePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,7 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\AppBar\appbar.lightning.png" />
     <Content Include="Assets\AppBar\appbar.save.rest.png" />
+    <Content Include="Assets\AppBar\appbar.settings.png" />
     <Content Include="Assets\AppBar\appbar.sync.rest.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

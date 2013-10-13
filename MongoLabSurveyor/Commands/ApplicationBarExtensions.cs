@@ -22,5 +22,12 @@ namespace MongoLabSurveyor.Commands
             return (from object button in appBar.Buttons
                     select button as ApplicationBarIconButton).FirstOrDefault(btn => btn != null && btn.Text == text);
         }
+
+        public static ApplicationBarMenuItem FindMenuItem(this IApplicationBar appBar, string text)
+        {
+            if (appBar == null) throw new ArgumentNullException("appBar");
+            return (from object button in appBar.MenuItems
+                    select button as ApplicationBarMenuItem).FirstOrDefault(item => item != null && item.Text == text);
+        }
     }
 }

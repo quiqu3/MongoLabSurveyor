@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:commands="clr-namespace:MongoLabSurveyor.Commands"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -16,15 +17,37 @@
     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=DatabaseViewModel}"
     shell:SystemTray.IsVisible="True">
 
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
     <shell:SystemTray.ProgressIndicator>
-        <shell:ProgressIndicator IsVisible="{Binding IsLoading}" IsIndeterminate="True"  />
+        <shell:ProgressIndicator Text="{Binding ProgressMessage}" IsVisible="{Binding IsLoading}" IsIndeterminate="True"  />
     </shell:SystemTray.ProgressIndicator>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
         <TextBlock Text="{Binding ErrorMessage}" Visibility="{Binding ErrorMessage, Converter={StaticResource NullToVisibilityConverter}}" TextWrapping="Wrap" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="24,64,12,12"/>
-        <phone:Pivot ItemsSource="{Binding Databases}">
+
+        <phone:Pivot ItemsSource="{Binding Databases}"  SelectedIndex="{Binding SelectedPivotIndex, Mode=TwoWay}">
             <phone:Pivot.Title>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Assets/ApplicationIconMini.png" Width="22" Height="32"></Image>
@@ -40,26 +63,92 @@
                 <DataTemplate>
                     <ScrollViewer>
                         <StackPanel Margin="0,0,0,17">
-                            <TextBlock Text="Collections" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.collections}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="Objects" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.objects}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="Document Average size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.avgObjSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="Total Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.dataSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="Storage Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.storageSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="Number of extents" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.numExtents}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="Indexes" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.indexes}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="Index Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.indexSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="File Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.fileSize}" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="Namespace files Size" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding DbStats.nsSizeMB}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding DbStats.DataSize}"   Style="{StaticResource PhoneTextTitle1Style}" />
+                                        <TextBlock Text="MB" Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
+                                    </StackPanel>
+                                    <TextBlock Text="Total size" Style="{StaticResource PhoneTextNormalStyle}" />
+                                </StackPanel>
+
+                                <StackPanel  Grid.Column="1">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding DbStats.StorageSize}"  Style="{StaticResource PhoneTextTitle1Style}"/>
+                                        <TextBlock Text="MB" Style="{StaticResource PhoneTextGroupHeaderStyle}"  Margin="0,40,0,0"/>
+                                    </StackPanel>
+                                    <TextBlock Text="Space allocated " Style="{StaticResource PhoneTextNormalStyle}"/>
+
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding DbStats.FileSize}"  Style="{StaticResource PhoneTextTitle1Style}"  />
+                                        <TextBlock Text="MB" Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
+                                    </StackPanel>
+                                    <TextBlock Text="Data file total size" Style="{StaticResource PhoneTextNormalStyle}" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding DbStats.NsSizeMB}" Style="{StaticResource PhoneTextTitle1Style}"/>
+                                        <TextBlock Text="MB" Style="{StaticResource PhoneTextGroupHeaderStyle}"  Margin="12,40,0,0"/>
+                                    </StackPanel>
+                                    <TextBlock Text="Namespace files size" Style="{StaticResource PhoneTextNormalStyle}"/>
+
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="3">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding DbStats.Indexes}" Style="{StaticResource PhoneTextTitle1Style}" />
+                                    </StackPanel>
+                                    <TextBlock Text="Indexes" Style="{StaticResource PhoneTextNormalStyle}" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="3" Grid.Column="1">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding DbStats.IndexSize}" Style="{StaticResource PhoneTextTitle1Style}"/>
+                                        <TextBlock Text="MB" Style="{StaticResource PhoneTextGroupHeaderStyle}"  Margin="12,40,0,0"/>
+                                    </StackPanel>
+                                    <TextBlock Text="indexes total size" Style="{StaticResource PhoneTextNormalStyle}"/>
+
+                                </StackPanel>
+
+                            </Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding DbStats.Objects}" Style="{StaticResource PhoneTextTitle1Style}"/>
+                                <TextBlock Text="objects" Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="12,0,12,0" Text="document average size" Style="{StaticResource PhoneTextNormalStyle}" />
+                                <TextBlock Margin="0,0,0,0" Text="{Binding DbStats.AvgObjSize}" Style="{StaticResource PhoneTextNormalStyle}" />
+                                <TextBlock Margin="12,0,0,0" Text="bytes" Style="{StaticResource PhoneTextSubtleStyle}" />
+
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding DbStats.Collections}"  Style="{StaticResource PhoneTextTitle1Style}" />
+                                <TextBlock Text="collections"  Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="12,0,12,0" Text="number of extents" Style="{StaticResource PhoneTextNormalStyle}" />
+                                <TextBlock Margin="0,0,0,0" Text="{Binding DbStats.NumExtents}" Style="{StaticResource PhoneTextNormalStyle}" />
+                                <TextBlock Margin="12,0,0,0" Text="bytes" Style="{StaticResource PhoneTextSubtleStyle}" />
+
+                            </StackPanel>
+
+
                         </StackPanel>
                     </ScrollViewer>
                 </DataTemplate>
@@ -71,16 +160,20 @@
         <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="True" IsVisible="True">
 
             <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.sync.rest.png" Text="refresh" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.lightning.png" Text="repair database" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.settings.png" Text="settings" />
 
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Click="SelectDatabaseMenuItem_Click" Text="select databases" />
-                <shell:ApplicationBarMenuItem Click="SettingsMenuItem_Click" Text="settings" />
+                <shell:ApplicationBarMenuItem Text="about" />
             </shell:ApplicationBar.MenuItems>
 
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
     <i:Interaction.Behaviors>
         <commands:ApplicationBarButtonCommand ButtonText="refresh" CommandBinding="{Binding RefreshCommand}"/>
+        <commands:ApplicationBarButtonCommand ButtonText="repair database" CommandBinding="{Binding RepairDatabaseCommand}"/>
+        <commands:ApplicationBarButtonCommand ButtonText="settings" CommandBinding="{Binding SettingsCommand}"/>
+        <commands:ApplicationBarMenuItemCommand ButtonText="about" CommandBinding="{Binding AboutCommand}"/>
     </i:Interaction.Behaviors>
 
 
