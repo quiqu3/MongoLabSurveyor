@@ -16,6 +16,9 @@
         private readonly IMongoLabDataService mongoLabDataService;
         private readonly ISettingsStore settingsStore;
         public DelegateCommand RefreshCommand { get; set; }
+        public DelegateCommand AboutCommand { get; set; }
+        public DelegateCommand SettingsCommand { get; set; }
+        public DelegateCommand RepairDatabaseCommand { get; set; }
 
         public DatabaseViewModel(ISettingsStore settingsStore, IMongoLabDataService mongoLabDataService, INavigationService navigationService)
             : base(navigationService)
@@ -26,6 +29,9 @@
             databases = new ObservableCollection<MongoLabDB>();
 
             this.RefreshCommand = new DelegateCommand(this.Refresh);
+            this.AboutCommand = new DelegateCommand(this.About);
+            this.SettingsCommand = new DelegateCommand(this.Settings);
+            this.RepairDatabaseCommand = new DelegateCommand(this.RepairDatabase);
 
             Refresh();
         }
@@ -38,7 +44,7 @@
                 return databases;
             }
         }
-        
+
         private bool isLoading;
         public bool IsLoading
         {
@@ -50,6 +56,20 @@
             {
                 isLoading = value;
                 RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private int selectedPivotIndex;
+        public int SelectedPivotIndex
+        {
+            get
+            {
+                return selectedPivotIndex;
+            }
+            set
+            {
+                selectedPivotIndex = value;
+                RaisePropertyChanged("SelectedPivotIndex");
             }
         }
 
@@ -67,8 +87,24 @@
             }
         }
 
+        private string progressMessage;
+        public string ProgressMessage
+        {
+            get
+            {
+                return progressMessage;
+            }
+            set
+            {
+                progressMessage = value;
+                RaisePropertyChanged("ProgressMessage");
+            }
+        }
+
         public void Refresh()
         {
+            SelectedPivotIndex = 0;
+
             ErrorMessage = null;
 
             Databases.Clear();
@@ -83,15 +119,37 @@
             }
         }
 
+        public void About()
+        {
+            NavigationService.Navigate(new Uri("/View/AboutPage.xaml", UriKind.Relative));
+        }
+
+        public void Settings()
+        {
+            NavigationService.Navigate(new Uri("/View/SettingsPage.xaml", UriKind.Relative));
+        }
+
+        public async void RepairDatabase()
+        {
+            IsLoading = true;
+            ProgressMessage = "Repairing...";
+
+            var currentDb = Databases[selectedPivotIndex];
+            var resp = await mongoLabDataService.SendRepairDatabase(currentDb.Name);
+
+            IsLoading = false;
+        }
+
         private async void GetDefaultDatabases()
         {
             try
             {
+                ProgressMessage = "Refreshing...";
                 IsLoading = true;
 
                 var databases = await mongoLabDataService.GetDatabases();
 
-                 databases.ToList().ForEach(async dbname => Databases.Add(new MongoLabDB() { Name = dbname, DbStats = await mongoLabDataService.GetDbStats(dbname) }));
+                databases.ToList().ForEach(async dbname => Databases.Add(new MongoLabDB() { Name = dbname, DbStats = await mongoLabDataService.GetDbStats(dbname) }));
             }
             catch (Exception ex)
             {
