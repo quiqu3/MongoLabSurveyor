@@ -64,88 +64,75 @@
                     <ScrollViewer>
                         <StackPanel Margin="0,0,0,17">
 
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding DbStats.DataSize}"   Style="{StaticResource PhoneTextTitle1Style}" />
-                                        <TextBlock Text="MB" Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
-                                    </StackPanel>
-                                    <TextBlock Text="Total size" Style="{StaticResource PhoneTextNormalStyle}" />
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding DbStats.DataSize}"   Style="{StaticResource PhoneTextTitle1Style}" />
+                                    <TextBlock Text="KB" Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
                                 </StackPanel>
+                                <TextBlock Text="Total size" Style="{StaticResource PhoneTextNormalStyle}" />
+                            </StackPanel>
 
-                                <StackPanel  Grid.Column="1">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding DbStats.StorageSize}"  Style="{StaticResource PhoneTextTitle1Style}"/>
-                                        <TextBlock Text="MB" Style="{StaticResource PhoneTextGroupHeaderStyle}"  Margin="0,40,0,0"/>
-                                    </StackPanel>
-                                    <TextBlock Text="Space allocated " Style="{StaticResource PhoneTextNormalStyle}"/>
-
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding DbStats.StorageSize}"  Style="{StaticResource PhoneTextTitle1Style}"/>
+                                    <TextBlock Text="KB" Style="{StaticResource PhoneTextGroupHeaderStyle}"  Margin="0,40,0,0"/>
                                 </StackPanel>
+                                <TextBlock Text="Space allocated " Style="{StaticResource PhoneTextNormalStyle}"/>
 
-                                <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding DbStats.FileSize}"  Style="{StaticResource PhoneTextTitle1Style}"  />
-                                        <TextBlock Text="MB" Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
-                                    </StackPanel>
-                                    <TextBlock Text="Data file total size" Style="{StaticResource PhoneTextNormalStyle}" />
+                            </StackPanel>
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding DbStats.FileSize}"  Style="{StaticResource PhoneTextTitle1Style}"  />
+                                    <TextBlock Text="KB" Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
                                 </StackPanel>
+                                <TextBlock Text="Data file total size" Style="{StaticResource PhoneTextNormalStyle}" />
+                            </StackPanel>
 
-                                <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding DbStats.NsSizeMB}" Style="{StaticResource PhoneTextTitle1Style}"/>
-                                        <TextBlock Text="MB" Style="{StaticResource PhoneTextGroupHeaderStyle}"  Margin="12,40,0,0"/>
-                                    </StackPanel>
-                                    <TextBlock Text="Namespace files size" Style="{StaticResource PhoneTextNormalStyle}"/>
-
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding DbStats.NsSizeMB}" Style="{StaticResource PhoneTextTitle1Style}"/>
+                                    <TextBlock Text="KB" Style="{StaticResource PhoneTextGroupHeaderStyle}"  Margin="12,40,0,0"/>
                                 </StackPanel>
+                                <TextBlock Text="Namespace files size" Style="{StaticResource PhoneTextNormalStyle}"/>
 
-                                <StackPanel Grid.Row="3">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding DbStats.Indexes}" Style="{StaticResource PhoneTextTitle1Style}" />
-                                    </StackPanel>
-                                    <TextBlock Text="Indexes" Style="{StaticResource PhoneTextNormalStyle}" />
-                                </StackPanel>
+                            </StackPanel>
 
-                                <StackPanel Grid.Row="3" Grid.Column="1">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding DbStats.IndexSize}" Style="{StaticResource PhoneTextTitle1Style}"/>
-                                        <TextBlock Text="MB" Style="{StaticResource PhoneTextGroupHeaderStyle}"  Margin="12,40,0,0"/>
-                                    </StackPanel>
-                                    <TextBlock Text="indexes total size" Style="{StaticResource PhoneTextNormalStyle}"/>
-
-                                </StackPanel>
-
-                            </Grid>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding DbStats.Objects}" Style="{StaticResource PhoneTextTitle1Style}"/>
                                 <TextBlock Text="objects" Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="12,0,12,0" Text="document average size" Style="{StaticResource PhoneTextNormalStyle}" />
-                                <TextBlock Margin="0,0,0,0" Text="{Binding DbStats.AvgObjSize}" Style="{StaticResource PhoneTextNormalStyle}" />
-                                <TextBlock Margin="12,0,0,0" Text="bytes" Style="{StaticResource PhoneTextSubtleStyle}" />
-
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding DbStats.Collections}"  Style="{StaticResource PhoneTextTitle1Style}" />
                                 <TextBlock Text="collections"  Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="12,0,12,0" Text="number of extents" Style="{StaticResource PhoneTextNormalStyle}" />
-                                <TextBlock Margin="0,0,0,0" Text="{Binding DbStats.NumExtents}" Style="{StaticResource PhoneTextNormalStyle}" />
+                                <TextBlock Margin="12,0,12,0" Text="Average document size" Style="{StaticResource PhoneTextNormalStyle}" />
+                                <TextBlock Margin="0,0,0,0" Text="{Binding DbStats.AvgObjSize}" Style="{StaticResource PhoneTextNormalStyle}" />
                                 <TextBlock Margin="12,0,0,0" Text="bytes" Style="{StaticResource PhoneTextSubtleStyle}" />
 
+                            </StackPanel>
+
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding DbStats.Indexes}" Style="{StaticResource PhoneTextTitle1Style}" />
+                                <TextBlock Text="indexes"  Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
+
+                            </StackPanel>
+
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding DbStats.IndexSize}" Style="{StaticResource PhoneTextTitle1Style}"/>
+                                    <TextBlock Text="KB" Style="{StaticResource PhoneTextGroupHeaderStyle}"  Margin="12,40,0,0"/>
+                                </StackPanel>
+                                <TextBlock Text="Total size of all indexes" Style="{StaticResource PhoneTextNormalStyle}"/>
+
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding DbStats.NumExtents}"  Style="{StaticResource PhoneTextTitle1Style}" />
+                                <TextBlock Text="filesystem extents"  Margin="0,40,0,0" Style="{StaticResource PhoneTextGroupHeaderStyle}" />
                             </StackPanel>
 
 

@@ -10,18 +10,18 @@
 
         public float AvgObjSize { get; set; }
 
-        public int DataSize { get; set; }
+        public float DataSize { get; set; }
 
-        public int StorageSize { get; set; }
+        public float StorageSize { get; set; }
 
         public int NumExtents { get; set; }
 
         public int Indexes { get; set; }
 
-        public int IndexSize { get; set; }
+        public float IndexSize { get; set; }
 
-        public int FileSize { get; set; }
+        public float FileSize { get; set; }
 
-        public int NsSizeMB { get; set; }
+        public float NsSizeMB { get; set; }
     }
 }
