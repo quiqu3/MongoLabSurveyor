@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20827.3
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoLabSurveyor", "MongoLabSurveyor\MongoLabSurveyor.csproj", "{7A2CFB0A-F26B-45C1-BEBD-9CC2B31125CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4D93C1B2-76A1-413E-BCFA-CE7375ADF6F3}"
@@ -8,6 +10,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4D93C1
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{08ABFC1B-3D40-477A-AF5C-E05AF4DCDE59}"
+	ProjectSection(SolutionItems) = preProject
+		Screenshots\wp_ss_20131014_0001.png = Screenshots\wp_ss_20131014_0001.png
+		Screenshots\wp_ss_20131014_0002.png = Screenshots\wp_ss_20131014_0002.png
+		Screenshots\wp_ss_20131014_0003.png = Screenshots\wp_ss_20131014_0003.png
+		Screenshots\wp_ss_20131014_720_0001.png = Screenshots\wp_ss_20131014_720_0001.png
+		Screenshots\wp_ss_20131014_720_0002.png = Screenshots\wp_ss_20131014_720_0002.png
+		Screenshots\wp_ss_20131014_720_0003.png = Screenshots\wp_ss_20131014_720_0003.png
+		Screenshots\wp_ss_20131014_768_0001.png = Screenshots\wp_ss_20131014_768_0001.png
+		Screenshots\wp_ss_20131014_768_0002.png = Screenshots\wp_ss_20131014_768_0002.png
+		Screenshots\wp_ss_20131014_768_0003.png = Screenshots\wp_ss_20131014_768_0003.png
 	EndProjectSection
 EndProject
 Global

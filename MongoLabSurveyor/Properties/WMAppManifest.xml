@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{7a2cfb0a-f26b-45c1-bebd-9cc2b31125cf}" Title="MongoLab Surveyor" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="MongoLabSurveyor author" Description="Sample description" Publisher="MongoLabSurveyor" PublisherID="{5c7aba9c-7863-46a1-9441-364840f04697}">
+  <App xmlns="" ProductID="{7a2cfb0a-f26b-45c1-bebd-9cc2b31125cf}" Title="MongoLab Surveyor" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="MongoLabSurveyor author" Description="Monitor your Mongolab databases" Publisher="MongoLabSurveyor" PublisherID="{5c7aba9c-7863-46a1-9441-364840f04697}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
